@@ -1,5 +1,7 @@
-import com.teamtreehouse.model.Player;
-import com.teamtreehouse.model.Players;
+package com.olgaivancic.controller;
+
+import com.olgaivancic.model.Player;
+import com.olgaivancic.model.Players;
 
 public class LeagueManager {
 

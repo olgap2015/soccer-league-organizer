@@ -1,4 +1,4 @@
-package com.teamtreehouse.model;
+package com.olgaivancic.model;
 
 public class Players {
 
