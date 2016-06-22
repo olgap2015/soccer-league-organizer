@@ -12,8 +12,35 @@ public class Team {
     private String mCoach;
     private Set<Player> mTeamPlayers;
 
-    //TODO: possibly need to change the constructor adding name and coach parameters.
-    public Team() {
+    public Team(String teamName, String coach) {
+        mTeamName = teamName;
+        mCoach = coach;
         mTeamPlayers = new TreeSet<Player>();
     }
+
+    public String getTeamName() {
+        return mTeamName;
+    }
+
+    public void setTeamName(String teamName) {
+        mTeamName = teamName;
+    }
+
+    public String getCoach() {
+        return mCoach;
+    }
+
+    public void setCoach(String coach) {
+        mCoach = coach;
+    }
+
+    public Set<Player> getTeamPlayers() {
+        return mTeamPlayers;
+    }
+
+    public void setTeamPlayers(Set<Player> teamPlayers) {
+        mTeamPlayers = teamPlayers;
+    }
+
+
 }
