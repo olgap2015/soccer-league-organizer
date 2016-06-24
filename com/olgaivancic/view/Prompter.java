@@ -8,6 +8,7 @@ import com.olgaivancic.model.Teams;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +29,7 @@ public class Prompter {
         mMenu = new HashMap<>();
         mMenu.put("cnt", "create a new team");
         mMenu.put("ap", "add a player to the team");
+        mMenu.put("rp", "remove player from the team back to the waiting list");
         mMenu.put("quit", "quit the program");
         mTeams = teams;
     }
@@ -40,25 +42,65 @@ public class Prompter {
                 switch (choice.toLowerCase()) {
                     case "cnt":
                         if (mTeams.getTeams().size() == mTeams.getTotalAvailablePlayers()) {
-                            System.out.println("You can't create a new team because you have already created " +
+                            System.out.println("\nYou can't create a new team because you have already created " +
                                     "the maximum amount of teams allowed!\n");
                             break;
                         } else {
                             Team team = promptForNewTeam();
                             mTeams.addTeam(team);
-                            System.out.printf("New team \"%s\" is created!  %n%n", team.getTeamName());
+                            System.out.printf("%nNew team \"%s\" is created!  %n%n", team.getTeamName());
                         }
                         break;
                     case "ap":
-                        // TODO: manage the case when there are no teams created yet
+                        if (mTeams.getTeams().size() == 0) {
+                            System.out.println("\nYou can't add a player because there are no teams created yet." +
+                                    "\nPlease, start by creating a team first!");
+                            break;
+                        }
+                        // Output list of players.
+                        mPlayers.outputPlayers();
                         // choose a player and a team from the list of available players.
-                        Player player = promptForPlayer();
+                        Player player = promptForPlayer(mPlayers);
                         Team chosenTeam = promptForTeam();
                         // Add the chosen player to the chosen team
                         mTeams.addPlayer(chosenTeam, player);
                         // Remove that player from the list of players.
-                        mPlayers.removePlayer(player);
-                        System.out.printf("Player %s %s was added to the team \"%s\".%n",
+//                        mPlayers.removePlayer(player);
+                        mPlayers.getPlayers().remove(player);
+                        System.out.printf("%nPlayer %s %s was added to the team \"%s\".%n",
+                                player.getFirstName(),
+                                player.getLastName(),
+                                chosenTeam.getTeamName());
+                        break;
+                    case "rp":
+                        // choose the team
+                        if (mTeams.getTeams().size() == 0) {
+                            System.out.println("\nYou can't remove a player because there are no teams created yet." +
+                                    "\nPlease, start by creating a team first and adding players!");
+                            break;
+                        }
+                        chosenTeam = promptForTeam();
+
+                        // Find and display players from that team
+                        if (chosenTeam.getTeamPlayers().size() == 0) {
+                            System.out.println("\nYou can't remove a player because there are no players in this team.\n" +
+                                    "Please, start by adding players to this team first!");
+                            break;
+                        }
+                        ArrayList<Player> teamPlayers = mTeams.findTeamPlayers(chosenTeam);
+                        for (int i = 0; i < teamPlayers.size(); i++) {
+                            System.out.printf("Player #%d: %s%n", i + 1, teamPlayers.get(i).toString());
+                        }
+                        // Prompt for the player's number
+                        player = promptForPlayer(teamPlayers);
+
+                        // Remove player from the team
+                        mTeams.removePlayer(chosenTeam, player);
+
+                        // Add player to the waiting list
+                        mPlayers.getPlayers().add(player);
+
+                        System.out.printf("%nPlayer %s %s was removed from the team \"%s\".%n",
                                 player.getFirstName(),
                                 player.getLastName(),
                                 chosenTeam.getTeamName());
@@ -75,6 +117,31 @@ public class Prompter {
             }
         } while (!choice.equals("quit"));
 
+    }
+
+    /**
+     * This method prompts for player from the list of players passed as a parameter
+     *
+     * @param teamPlayers
+     * @return teamPlayers (type ArrayList<Player>)
+     */
+    private Player promptForPlayer(ArrayList<Player> teamPlayers) {
+        int playersNumber = 0;
+        do {
+            String playersNumberAsString = promptForInput("\nChoose the player by entering his number: ");
+            try {
+                playersNumber = Integer.parseInt(playersNumberAsString);
+            } catch (NumberFormatException nfe) {
+                System.out.println("Please, enter a whole number!");
+            }
+            // check if a number is within the proper range
+            if (playersNumber <= 0 || playersNumber > teamPlayers.size()) {
+                System.out.printf("Please, enter a number within the range of 1 to %d.%n", teamPlayers.size());
+            }
+        } while (playersNumber <= 0 || playersNumber > teamPlayers.size());
+
+
+        return teamPlayers.get(playersNumber - 1);
     }
 
     private Team promptForTeam() {
@@ -104,10 +171,9 @@ public class Prompter {
      * This method prompts for player from the list of available players
      *
      * @return player (type Player)
+     * @param players
      */
-    private Player promptForPlayer() {
-        // Output list of players and another one for the list of teams.
-        mPlayers.outputPlayers();
+    private Player promptForPlayer(Players players) {
 
         int playersNumber = 0;
         do {
@@ -118,13 +184,13 @@ public class Prompter {
                 System.out.println("Please, enter a whole number!");
             }
             // check if a number is within the proper range
-            if (playersNumber <= 0 || playersNumber > mPlayers.getPlayers().size()) {
-                System.out.printf("Please, enter a number within the range of 1 to %d.%n", mPlayers.getPlayers().size());
+            if (playersNumber <= 0 || playersNumber > players.getPlayers().size()) {
+                System.out.printf("Please, enter a number within the range of 1 to %d.%n", players.getPlayers().size());
             }
-        } while (playersNumber <= 0 || playersNumber > mPlayers.getPlayers().size());
+        } while (playersNumber <= 0 || playersNumber > players.getPlayers().size());
 
 
-        return mPlayers.getPlayers().get(playersNumber - 1);
+        return players.getPlayers().get(playersNumber - 1);
     }
 
     /**
@@ -150,13 +216,13 @@ public class Prompter {
         //TODO: make sure that created team is unique
         String teamName = "";
         do {
-            System.out.print("Please, enter a name of the team:  ");
+            System.out.print("\nPlease, enter a name for the team:  ");
             teamName = mReader.readLine();
         } while (teamName.length() == 0);
 
         String coach = "";
         do {
-            System.out.print("Please, enter the coach for the team:  ");
+            System.out.print("Please, enter a coach for the team:  ");
             coach = mReader.readLine();
         } while (coach.length() == 0);
         return new Team(teamName, coach);
@@ -165,11 +231,13 @@ public class Prompter {
     private String promptAction() throws IOException {
         String choice = "";
         do {
-            System.out.printf("There are currently %d registered players.%n", mPlayers.getPlayers().size());
-            System.out.println("What would you like to do? Your options are:");
+            System.out.printf("There are currently %d players on the waiting list and %d team(s).%n%n",
+                    mPlayers.getPlayers().size(),
+                    mTeams.getTeams().size());
+            System.out.println("\tWhat would you like to do? Your options are:");
 
             for (Map.Entry<String, String> option : mMenu.entrySet()) {
-                System.out.printf("%s - %s%n", option.getKey(), option.getValue());
+                System.out.printf("\t%s - %s%n", option.getKey(), option.getValue());
             }
 
             choice = mReader.readLine();

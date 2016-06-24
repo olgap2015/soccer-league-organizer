@@ -51,7 +51,7 @@ public class Players {
      * This method outputs on the console the list of the available players.
      */
     public void outputPlayers() {
-        System.out.printf("Please, choose a player from the list of %d available mPlayers.%n", mPlayers.size());
+        System.out.printf("Please, choose a player from the list of %d available players.%n", mPlayers.size());
 
         // output all the available mPlayers
         int i;
@@ -73,4 +73,5 @@ public class Players {
             }
         }
     }
+
 }

@@ -62,4 +62,36 @@ public class Teams {
             }
         }
     }
+
+    /**
+     * This method locates the team (passed as a parameter) in the list of teams.
+     *
+     * @param chosenTeam
+     * @return The list of players of the specified team.
+     */
+    public ArrayList<Player> findTeamPlayers(Team chosenTeam) {
+        ArrayList<Player> players = new ArrayList<>();
+        // Find the team from the list of teams
+        for (int i = 0; i < mTeams.size(); i++) {
+            if (chosenTeam.equals(mTeams.get(i))) {
+                players = mTeams.get(i).getTeamPlayers();
+            }
+        }
+
+        return players;
+    }
+
+    /**
+     * This method removes player from the chosen team. Both player and team are passed to the method as parameters.
+     *
+     * @param team
+     * @param player
+     */
+    public void removePlayer(Team team, Player player) {
+        for (int i = 0; i < mTeams.size(); i++) {
+            if (team.equals(mTeams.get(i))) {
+                mTeams.get(i).getTeamPlayers().remove(player);
+            }
+        }
+    }
 }
