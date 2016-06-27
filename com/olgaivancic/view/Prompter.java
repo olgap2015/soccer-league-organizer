@@ -57,15 +57,26 @@ public class Prompter {
                                     "\nPlease, start by creating a team first!");
                             break;
                         }
+
+                        // Choose the team
+                        Team chosenTeam = promptForTeam();
+
+                        // Make sure that the team didn't hit the max number of players yet.
+                        if (chosenTeam.getTeamPlayers().size() == Team.MAX_NUMBER_OF_PLAYERS) {
+                            System.out.printf("%nSorry, this team already has a maximum number " +
+                                    "of players allowed - %d.%n%n", Team.MAX_NUMBER_OF_PLAYERS);
+                            break;
+                        }
+
                         // Output list of players.
                         mPlayers.outputPlayers();
-                        // choose a player and a team from the list of available players.
+
+                        // choose a player from the list of available players.
                         Player player = promptForPlayer(mPlayers);
-                        Team chosenTeam = promptForTeam();
+
                         // Add the chosen player to the chosen team
                         mTeams.addPlayer(chosenTeam, player);
-                        // Remove that player from the list of players.
-//                        mPlayers.removePlayer(player);
+                        // Remove that player from the waiting list.
                         mPlayers.getPlayers().remove(player);
                         System.out.printf("%nPlayer %s %s was added to the team \"%s\".%n",
                                 player.getFirstName(),
@@ -87,10 +98,13 @@ public class Prompter {
                                     "Please, start by adding players to this team first!");
                             break;
                         }
-                        ArrayList<Player> teamPlayers = mTeams.findTeamPlayers(chosenTeam);
-                        for (int i = 0; i < teamPlayers.size(); i++) {
-                            System.out.printf("Player #%d: %s%n", i + 1, teamPlayers.get(i).toString());
-                        }
+
+                        // Output alphabetically sorted list of players
+                        chosenTeam.outputPlayers();
+
+                        // Get the list of team players
+                        ArrayList<Player> teamPlayers = chosenTeam.getTeamPlayers();
+
                         // Prompt for the player's number
                         player = promptForPlayer(teamPlayers);
 
@@ -146,7 +160,7 @@ public class Prompter {
 
     private Team promptForTeam() {
         // Output the list of available teams.
-        mTeams.outputListOfTeams();
+        mTeams.outputTeams();
 
         // prompt for team number.
         int teamNumber = 0;
@@ -170,8 +184,8 @@ public class Prompter {
     /**
      * This method prompts for player from the list of available players
      *
-     * @return player (type Player)
      * @param players
+     * @return player (type Player)
      */
     private Player promptForPlayer(Players players) {
 
@@ -213,18 +227,34 @@ public class Prompter {
     }
 
     private Team promptForNewTeam() throws IOException {
-        //TODO: make sure that created team is unique
         String teamName = "";
+        boolean teamNameIsNotARepeat = true;
         do {
             System.out.print("\nPlease, enter a name for the team:  ");
             teamName = mReader.readLine();
-        } while (teamName.length() == 0);
+
+            // Make sure that entered team name is unique
+            teamNameIsNotARepeat = mTeams.checkIfTeamNameIsNotARepeat(teamName);
+            if (!teamNameIsNotARepeat) {
+                System.out.println("This name is already in use for an existing team.");
+            }
+        } while (teamName.length() == 0 || !teamNameIsNotARepeat);
+
 
         String coach = "";
+        boolean coachIsNotARepeat = true;
         do {
             System.out.print("Please, enter a coach for the team:  ");
             coach = mReader.readLine();
-        } while (coach.length() == 0);
+
+            // Make sure that entered coach is unique
+            coachIsNotARepeat = mTeams.checkIfCoachIsNotARepeat(coach);
+            if (!coachIsNotARepeat) {
+                System.out.println("\nThis coach is already chosen by another team.");
+            }
+        } while (coach.length() == 0 || !coachIsNotARepeat);
+
+
         return new Team(teamName, coach);
     }
 

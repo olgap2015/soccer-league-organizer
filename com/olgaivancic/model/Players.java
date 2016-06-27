@@ -1,6 +1,7 @@
 package com.olgaivancic.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Players {
 
@@ -53,25 +54,11 @@ public class Players {
     public void outputPlayers() {
         System.out.printf("Please, choose a player from the list of %d available players.%n", mPlayers.size());
 
-        // output all the available mPlayers
-        int i;
-        for (i = 0; i < mPlayers.size(); i++) {
-            //TODO: maybe format the output as a table later
-            System.out.printf("Player #%d: %s%n", i + 1, mPlayers.get(i).toString());
-        }
-    }
+        // Sort the players alphabetically.
+        Collections.sort(mPlayers, (player1, player2) -> player1.compareTo(player2));
 
-    /**
-     * This method removes specified player from the list of players.
-     *
-     * @param player
-     */
-    public void removePlayer(Player player) {
-        for (int i = 0; i < mPlayers.size(); i++) {
-            if (player.equals(mPlayers.get(i))) {
-                mPlayers.remove(i);
-            }
-        }
+        // output all players on the waiting list
+        mPlayers.forEach(player -> System.out.printf("Player #%d: %s%n", mPlayers.indexOf(player) + 1, player));
     }
 
 }

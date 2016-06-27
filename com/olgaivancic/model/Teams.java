@@ -1,6 +1,7 @@
 package com.olgaivancic.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,6 +30,7 @@ public class Teams {
         mTeams = teams;
     }
 
+
     /**
      * This method adds a single team passed as a parameter to the list of teams
      *
@@ -41,12 +43,14 @@ public class Teams {
     /**
      * This method outputs the list of teams on the console.
      */
-    public void outputListOfTeams() {
+    public void outputTeams() {
         System.out.printf("There are %d team(s) available:%n%n", mTeams.size());
-        int i = 0;
-        for (i = 0; i < mTeams.size(); i++) {
-            System.out.printf("Team #%d: %s%n", i + 1, mTeams.get(i).toString());
-        }
+
+        // Sort teams alphabetically.
+        Collections.sort(mTeams, (team1, team2) -> team1.compareTo(team2));
+
+        // Output the sorted list of teams.
+        mTeams.forEach(team -> System.out.printf("Team #%d: %s%n", mTeams.indexOf(team) + 1, team));
     }
 
     /**
@@ -93,5 +97,35 @@ public class Teams {
                 mTeams.get(i).getTeamPlayers().remove(player);
             }
         }
+    }
+
+    /**
+     * This method checks to make sure the name of a new team hasn't been used before.
+     *
+     * @param teamName
+     * @return True if the name of the team is original; false if the name of the team is already in use.
+     */
+    public boolean checkIfTeamNameIsNotARepeat(String teamName) {
+        for (int i = 0; i < mTeams.size(); i++) {
+            if (mTeams.get(i).getTeamName().equalsIgnoreCase(teamName)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * This method checks to make sure the name of the coach hasn't been used before.
+     *
+     * @param coach
+     * @return True if the name of the coach is original; false if the name of the coach is already in use.
+     */
+    public boolean checkIfCoachIsNotARepeat(String coach) {
+        for (int i = 0; i < mTeams.size(); i++) {
+            if (mTeams.get(i).getCoach().equalsIgnoreCase(coach)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

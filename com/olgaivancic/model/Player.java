@@ -36,8 +36,14 @@ public class Player implements Comparable<Player>, Serializable {
     // TODO: complete compareTo method for Player
     @Override
     public int compareTo(Player other) {
-        // We always want to sort by last name then first name
-        return 0;
+        // Compare by last name then first name
+        if (this.equals(other)) {
+            return 0;
+        }
+        if (mLastName.equals(other.getLastName())) {
+            return mFirstName.compareTo(other.getFirstName());
+        }
+        return mLastName.compareTo(other.getLastName());
     }
 
     @Override
@@ -71,7 +77,7 @@ public class Player implements Comparable<Player>, Serializable {
         } else {
             hasExperience = "no";
         }
-        return mFirstName + " " + mLastName + " (height - " + mHeightInInches + " in, previous experience - " +
+        return mLastName + ", " + mFirstName + " (height - " + mHeightInInches + " in, previous experience - " +
                 hasExperience + ")";
     }
 }
