@@ -8,9 +8,7 @@ import com.olgaivancic.model.Teams;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This Class is responsible for implementing I/O methods for creating and managing the teams.
@@ -30,6 +28,7 @@ public class Prompter {
         mMenu.put("cnt", "create a new team");
         mMenu.put("ap", "add a player to the team");
         mMenu.put("rp", "remove player from the team back to the waiting list");
+        mMenu.put("hr", "run a height report for a particular team");
         mMenu.put("quit", "quit the program");
         mTeams = teams;
     }
@@ -119,6 +118,13 @@ public class Prompter {
                                 player.getLastName(),
                                 chosenTeam.getTeamName());
                         break;
+                    case "hr":
+                        // Choose a team for the report.
+                        chosenTeam = promptForTeam();
+
+                        // Output height report for the chosen team.
+                        runHeightReport(chosenTeam);
+                        break;
                     case "quit":
                         System.out.println("Thanks for using League Manager. Bye!");
                         break;
@@ -131,6 +137,26 @@ public class Prompter {
             }
         } while (!choice.equals("quit"));
 
+    }
+
+    /**
+     * This method outputs a report about players of a particular team grouped by players' height.
+     *
+     * @param chosenTeam Team of players
+     */
+    private void runHeightReport(Team chosenTeam) {
+        System.out.println("\nHeight Report for team \"" + chosenTeam.getTeamName() + "\"\n");
+
+        for (int height : chosenTeam.getHeights()) {
+            List<Player> playersForHeight = chosenTeam.getPlayersForHeight(height);
+            Collections.sort(playersForHeight, (p1, p2) -> p1.compareTo(p2));
+            int playersCount = playersForHeight.size();
+            System.out.printf("%d in - %d players:%n", height, playersCount);
+            for (Player player : playersForHeight) {
+                System.out.printf("\t- %s, %s%n", player.getLastName(), player.getFirstName());
+            }
+            System.out.println();
+        }
     }
 
     /**

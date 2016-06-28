@@ -1,7 +1,6 @@
 package com.olgaivancic.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 /**
  * This Class models the team of players. Players are unique.
@@ -79,5 +78,40 @@ public class Team implements Comparable<Team> {
         // Output the sorted list on the console
         mTeamPlayers.forEach(player -> System.out.printf("Player #%d: %s%n",
                 mTeamPlayers.indexOf(player) + 1, player));
+    }
+
+    /**
+     * This method creates a map of team players by height.
+     *
+     * @return Map of the team players by their height.
+     */
+    public Map<Integer, List<Player>> byHeight() {
+        Map<Integer, List<Player>> byHeight = new TreeMap<>();
+        for (Player player : mTeamPlayers) {
+            List<Player> playerHeights = byHeight.get(player.getHeightInInches());
+            if (playerHeights == null) {
+                playerHeights = new ArrayList<>();
+                byHeight.put(player.getHeightInInches(), playerHeights);
+            }
+            playerHeights.add(player);
+        }
+        return byHeight;
+    }
+
+    public Set<Integer> getHeights() {
+        return byHeight().keySet();
+    }
+
+    /**
+     * This method looks through the list of players and find the ones that match certain height
+     * passed as a parameter.
+     *
+     * @param height Height of a player in inches
+     * @return List of players that match certain height
+     */
+    public List<Player> getPlayersForHeight(int height) {
+        List<Player> players = byHeight().get(height);
+        Collections.sort(players, (p1, p2) -> p1.compareTo(p2));
+        return players;
     }
 }
