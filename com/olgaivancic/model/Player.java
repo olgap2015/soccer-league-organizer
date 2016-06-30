@@ -29,7 +29,7 @@ public class Player implements Comparable<Player>, Serializable {
         return mHeightInInches;
     }
 
-    public boolean isPreviousExperience() {
+    public boolean hasPreviousExperience() {
         return mPreviousExperience;
     }
 

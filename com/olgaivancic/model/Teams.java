@@ -139,18 +139,7 @@ public class Teams {
     public Map<Team, Integer> byExperience() {
         Map<Team, Integer> byExperience = new TreeMap<>();
         for (Team team : mTeams) {
-            int numberOfExperPlayers = 0;
-            int percentOfExperPlayers = -1;
-            // only calculates percentage if there are players in that team
-            if (team.getTeamPlayers().size() > 0) {
-                for (Player player : team.getTeamPlayers()) {
-                    if (player.isPreviousExperience()) {
-                        numberOfExperPlayers++;
-                    }
-                }
-                int teamSize = team.getTeamPlayers().size();
-                percentOfExperPlayers = numberOfExperPlayers * 100 / teamSize;
-            }
+            int percentOfExperPlayers = team.calculatePercentOfExperPlayers();
             byExperience.put(team, percentOfExperPlayers);
         }
         return byExperience;

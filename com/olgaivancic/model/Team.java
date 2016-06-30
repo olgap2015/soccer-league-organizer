@@ -114,4 +114,26 @@ public class Team implements Comparable<Team> {
         Collections.sort(players, (p1, p2) -> p1.compareTo(p2));
         return players;
     }
+
+    /**
+     * This method calculates the percentage (1-100) of experienced players in the team.
+     * If there are no players on the team, it returns -1.
+     *
+     * @return Percentage of experienced players in the team. If there are no players on the team, it returns -1.
+     */
+    public int calculatePercentOfExperPlayers() {
+        int numberOfExperPlayers = 0;
+        int percentOfExperPlayers = -1;
+
+        if (mTeamPlayers.size() > 0) {
+            for (Player player : mTeamPlayers) {
+                if (player.hasPreviousExperience()) {
+                    numberOfExperPlayers++;
+                }
+            }
+            int teamSize = mTeamPlayers.size();
+            percentOfExperPlayers = numberOfExperPlayers * 100 / teamSize;
+        }
+        return percentOfExperPlayers;
+    }
 }

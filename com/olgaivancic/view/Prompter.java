@@ -24,13 +24,14 @@ public class Prompter {
     public Prompter(Players players, Teams teams) {
         mReader = new BufferedReader(new InputStreamReader(System.in));
         mPlayers = players;
-        mMenu = new HashMap<>();
-        mMenu.put("cnt", "create a new team");
-        mMenu.put("ap", "add a player to the team");
-        mMenu.put("rp", "remove player from the team back to the waiting list");
-        mMenu.put("hr", "run a height report for a particular team");
-        mMenu.put("er", "run a report containing experience break down by teams");
-        mMenu.put("quit", "quit the program");
+        mMenu = new TreeMap<>();
+        mMenu.put("1", "create a NEW TEAM");
+        mMenu.put("2", "ADD a PLAYER to the team");
+        mMenu.put("3", "REMOVE PLAYER from the team back to the waiting list");
+        mMenu.put("4", "run a HEIGHT REPORT for a particular team");
+        mMenu.put("5", "run a EXPERIENCE REPORT for the whole League");
+        mMenu.put("6", "print (on the screen) a ROSTER for a particular team");
+        mMenu.put("quit", "QUIT the program");
         mTeams = teams;
     }
 
@@ -40,7 +41,7 @@ public class Prompter {
             try {
                 choice = promptAction();
                 switch (choice.toLowerCase()) {
-                    case "cnt":
+                    case "1":
                         if (mTeams.getTeams().size() == mTeams.getTotalAvailablePlayers()) {
                             System.out.println("\nYou can't create a new team because you have already created " +
                                     "the maximum amount of teams allowed!\n");
@@ -51,7 +52,7 @@ public class Prompter {
                             System.out.printf("%nNew team \"%s\" is created!  %n%n", team.getTeamName());
                         }
                         break;
-                    case "ap":
+                    case "2":
                         if (mTeams.getTeams().size() == 0) {
                             System.out.println("\nYou can't add a player because there are no teams created yet." +
                                     "\nPlease, start by creating a team first!");
@@ -83,7 +84,7 @@ public class Prompter {
                                 player.getLastName(),
                                 chosenTeam.getTeamName());
                         break;
-                    case "rp":
+                    case "3":
                         // choose the team
                         if (mTeams.getTeams().size() == 0) {
                             System.out.println("\nYou can't remove a player because there are no teams created yet." +
@@ -119,19 +120,27 @@ public class Prompter {
                                 player.getLastName(),
                                 chosenTeam.getTeamName());
                         break;
-                    case "hr":
+                    case "4":
                         // Choose a team for the report.
                         chosenTeam = promptForTeam();
 
                         // Output height report for the chosen team if it has players.
                         runHeightReport(chosenTeam);
                         break;
-                    case "er":
+                    case "5":
                         if (mTeams.getTeams().size() == 0) {
                             System.out.println("\nThere are no teams created yet!");
                         } else {
                             runExperienceReport();
                         }
+                        break;
+                    case "6":
+                        if (mTeams.getTeams().size() == 0) {
+                            System.out.println("There are no teams created yet!\n");
+                            break;
+                        }
+                        chosenTeam = promptForTeam();
+                        printRoster(chosenTeam);
                         break;
                     case "quit":
                         System.out.println("Thanks for using League Manager. Bye!");
@@ -148,6 +157,32 @@ public class Prompter {
     }
 
     /**
+     * This method outputs a roster on the console containing current list of players and their stats.
+     * It also displays the percentage of experienced players in the team.
+     *
+     * @param chosenTeam
+     */
+    private void printRoster(Team chosenTeam) {
+        System.out.printf("%nROSTER for team \"%s\".%n", chosenTeam.getTeamName());
+        if (chosenTeam.getTeamPlayers().size() == 0) {
+            System.out.println("\nThere are no players in this team!\n");
+            return;
+        }
+        System.out.printf("%nCoach - %s.%n", chosenTeam.getCoach());
+        System.out.printf("%d%% of players have previous experience.%n%n",
+                chosenTeam.calculatePercentOfExperPlayers());
+
+        Collections.sort(chosenTeam.getTeamPlayers(), (p1, p2) -> p1.compareTo(p2));
+
+        for (Player player : chosenTeam.getTeamPlayers()) {
+            System.out.printf("%d. %s%n",
+                    chosenTeam.getTeamPlayers().indexOf(player) + 1,
+                    player.toString());
+        }
+        System.out.println();
+    }
+
+    /**
      * This method outputs on the console report that contains break down
      * of each team by experience. If a team doesn't have players, then
      * "no players on the team" is displayed for that team.
@@ -157,22 +192,24 @@ public class Prompter {
         // Create an updated map of teams mapped to percentage of experienced players in each team.
         Map<Team, Integer> teamsByExperience = mTeams.byExperience();
 
-        System.out.println("Experience Report for the Soccer League\n");
-        System.out.println("\t\tExperienced players, %\tUnexperienced players, %");
+        System.out.printf("%37s%20s%n", "Experienced", "Inexperienced");
+        System.out.printf("%37s%18s%n%n", "players, %", "players, %");
 
         // Loop through the teams to get the keys and values to use in the report
         for (Map.Entry<Team, Integer> entry : teamsByExperience.entrySet()) {
-            // TODO: if statement maybe unnecessary
+            // If there are no players in the team display a message instead of stats.
             if (entry.getValue() == -1) {
-                System.out.printf("Team \"%s\": No players in this team!%n", entry.getKey().getTeamName());
+                System.out.printf("%-30s%-24s%n",
+                        "Team \"" + entry.getKey().getTeamName() + "\"",
+                        "No players in this team!");
             } else {
-                // TODO: format output like a table
-                System.out.printf("Team \"%s\": %d\t%d%n",
-                        entry.getKey().getTeamName(),
+                System.out.printf("%-30s%-18d%-3d%n",
+                        "Team \"" + entry.getKey().getTeamName() + "\"",
                         entry.getValue(),
                         100 - entry.getValue());
             }
         }
+        System.out.println();
 
     }
 
@@ -182,10 +219,10 @@ public class Prompter {
      * @param chosenTeam Team of players
      */
     private void runHeightReport(Team chosenTeam) {
-        System.out.println("\nHeight Report for team \"" + chosenTeam.getTeamName() + "\"\n");
+        System.out.println("\nHEIGHT REPORT for team \"" + chosenTeam.getTeamName() + "\"\n");
 
         if (chosenTeam.getTeamPlayers().size() == 0) {
-            System.out.println("\nThis team currently doesn't have any players.");
+            System.out.println("This team currently doesn't have any players.\n");
         }
 
         for (int height : chosenTeam.getHeights()) {
@@ -240,7 +277,7 @@ public class Prompter {
             }
             // check if a number is within the proper range
             if (teamNumber <= 0 || teamNumber > mTeams.getTeams().size()) {
-                System.out.printf("Please, enter a number within the range of 1 to %d.%n", mPlayers.getPlayers().size());
+                System.out.printf("Please, enter a number within the range of 1 to %d.%n", mTeams.getTeams().size());
             }
         } while (teamNumber <= 0 || teamNumber > mTeams.getTeams().size());
 
@@ -334,7 +371,11 @@ public class Prompter {
             System.out.println("\tWhat would you like to do? Your options are:");
 
             for (Map.Entry<String, String> option : mMenu.entrySet()) {
-                System.out.printf("\t%s - %s%n", option.getKey(), option.getValue());
+                if (option.getKey().equals("quit")) {
+                    System.out.printf("\t%s - %s%n", option.getKey(), option.getValue());
+                } else {
+                    System.out.printf("\t%s. - %s%n", option.getKey(), option.getValue());
+                }
             }
 
             choice = mReader.readLine();
