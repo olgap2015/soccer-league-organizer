@@ -1,8 +1,6 @@
 package com.olgaivancic.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * This Class represents the list of the teams. There can't be more teams than the players available on Players[] list.
@@ -128,4 +126,35 @@ public class Teams {
         }
         return true;
     }
+
+    /**
+     * This method creates a map of teams paired with the percentage (1-100) of
+     * players with experience in each team. Note: percentOfExperPlayers will
+     * be set to -1 if there are no players currently in that team.
+     *
+     * @return A map of teams paired with the percentage of players with
+     * experience in each team. Note: percentOfExperPlayers will
+     * be set to -1 if there are no players currently in that team.
+     */
+    public Map<Team, Integer> byExperience() {
+        Map<Team, Integer> byExperience = new TreeMap<>();
+        for (Team team : mTeams) {
+            int numberOfExperPlayers = 0;
+            int percentOfExperPlayers = -1;
+            // only calculates percentage if there are players in that team
+            if (team.getTeamPlayers().size() > 0) {
+                for (Player player : team.getTeamPlayers()) {
+                    if (player.isPreviousExperience()) {
+                        numberOfExperPlayers++;
+                    }
+                }
+                int teamSize = team.getTeamPlayers().size();
+                percentOfExperPlayers = numberOfExperPlayers * 100 / teamSize;
+            }
+            byExperience.put(team, percentOfExperPlayers);
+        }
+        return byExperience;
+    }
+
+
 }

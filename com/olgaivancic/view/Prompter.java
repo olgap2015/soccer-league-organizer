@@ -29,6 +29,7 @@ public class Prompter {
         mMenu.put("ap", "add a player to the team");
         mMenu.put("rp", "remove player from the team back to the waiting list");
         mMenu.put("hr", "run a height report for a particular team");
+        mMenu.put("er", "run a report containing experience break down by teams");
         mMenu.put("quit", "quit the program");
         mTeams = teams;
     }
@@ -122,8 +123,15 @@ public class Prompter {
                         // Choose a team for the report.
                         chosenTeam = promptForTeam();
 
-                        // Output height report for the chosen team.
+                        // Output height report for the chosen team if it has players.
                         runHeightReport(chosenTeam);
+                        break;
+                    case "er":
+                        if (mTeams.getTeams().size() == 0) {
+                            System.out.println("\nThere are no teams created yet!");
+                        } else {
+                            runExperienceReport();
+                        }
                         break;
                     case "quit":
                         System.out.println("Thanks for using League Manager. Bye!");
@@ -140,12 +148,45 @@ public class Prompter {
     }
 
     /**
+     * This method outputs on the console report that contains break down
+     * of each team by experience. If a team doesn't have players, then
+     * "no players on the team" is displayed for that team.
+     * Precondition: there must be at least one team created.
+     */
+    private void runExperienceReport() {
+        // Create an updated map of teams mapped to percentage of experienced players in each team.
+        Map<Team, Integer> teamsByExperience = mTeams.byExperience();
+
+        System.out.println("Experience Report for the Soccer League\n");
+        System.out.println("\t\tExperienced players, %\tUnexperienced players, %");
+
+        // Loop through the teams to get the keys and values to use in the report
+        for (Map.Entry<Team, Integer> entry : teamsByExperience.entrySet()) {
+            // TODO: if statement maybe unnecessary
+            if (entry.getValue() == -1) {
+                System.out.printf("Team \"%s\": No players in this team!%n", entry.getKey().getTeamName());
+            } else {
+                // TODO: format output like a table
+                System.out.printf("Team \"%s\": %d\t%d%n",
+                        entry.getKey().getTeamName(),
+                        entry.getValue(),
+                        100 - entry.getValue());
+            }
+        }
+
+    }
+
+    /**
      * This method outputs a report about players of a particular team grouped by players' height.
      *
      * @param chosenTeam Team of players
      */
     private void runHeightReport(Team chosenTeam) {
         System.out.println("\nHeight Report for team \"" + chosenTeam.getTeamName() + "\"\n");
+
+        if (chosenTeam.getTeamPlayers().size() == 0) {
+            System.out.println("\nThis team currently doesn't have any players.");
+        }
 
         for (int height : chosenTeam.getHeights()) {
             List<Player> playersForHeight = chosenTeam.getPlayersForHeight(height);
