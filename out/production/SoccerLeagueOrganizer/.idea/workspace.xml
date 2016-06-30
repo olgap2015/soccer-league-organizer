@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fad0904d-d623-435b-81d4-0785525009c5" name="Default" comment="Implemented height report for teams">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/olgaivancic/model/Teams.java" afterPath="$PROJECT_DIR$/com/olgaivancic/model/Teams.java" />
+    <list default="true" id="fad0904d-d623-435b-81d4-0785525009c5" name="Default" comment="Implemented experience report, fixed bugs">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com/olgaivancic/view/Prompter.java" afterPath="$PROJECT_DIR$/com/olgaivancic/view/Prompter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SoccerLeagueOrganizer/.idea/workspace.xml" afterPath="$PROJECT_DIR$/out/production/SoccerLeagueOrganizer/.idea/workspace.xml" />
     </list>
     <ignored path="SoccerLeagueOrganazer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,9 +27,11 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1491">
-              <caret line="79" column="49" selection-start-line="79" selection-start-column="49" selection-end-line="79" selection-end-column="49" />
-              <folding />
+            <state relative-caret-position="525">
+              <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+              <folding>
+                <element signature="e#899#900#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,8 +59,8 @@
       <file leaf-file-name="Prompter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/com/olgaivancic/view/Prompter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="155" column="17" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
+            <state relative-caret-position="424">
+              <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,8 +71,8 @@
       <file leaf-file-name="Teams.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Teams.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2730">
-              <caret line="138" column="58" selection-start-line="138" selection-start-column="58" selection-end-line="138" selection-end-column="58" />
+            <state relative-caret-position="798">
+              <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -82,8 +81,8 @@
       <file leaf-file-name="Team.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Team.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1533">
-              <caret line="87" column="38" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
+            <state relative-caret-position="2352">
+              <caret line="128" column="40" selection-start-line="128" selection-start-column="40" selection-end-line="128" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -114,11 +113,11 @@
         <option value="$PROJECT_DIR$/TeamList.java" />
         <option value="$PROJECT_DIR$/com/olgaivancic/model/TeamList.java" />
         <option value="$PROJECT_DIR$/com/olgaivancic/controller/LeagueManager.java" />
-        <option value="$PROJECT_DIR$/com/olgaivancic/model/Player.java" />
         <option value="$PROJECT_DIR$/com/olgaivancic/model/Players.java" />
-        <option value="$PROJECT_DIR$/com/olgaivancic/model/Team.java" />
-        <option value="$PROJECT_DIR$/com/olgaivancic/view/Prompter.java" />
         <option value="$PROJECT_DIR$/com/olgaivancic/model/Teams.java" />
+        <option value="$PROJECT_DIR$/com/olgaivancic/model/Team.java" />
+        <option value="$PROJECT_DIR$/com/olgaivancic/model/Player.java" />
+        <option value="$PROJECT_DIR$/com/olgaivancic/view/Prompter.java" />
       </list>
     </option>
   </component>
@@ -130,10 +129,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="1370" />
-    <option name="height" value="744" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -165,6 +163,8 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SearchEverywhereHistoryKey" value="evaluate expre&#9;ACTION&#9;EvaluateExpression" />
+    <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -479,7 +479,14 @@
       <option name="project" value="LOCAL" />
       <updated>1467085432095</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implemented experience report, fixed bugs">
+      <created>1467257463113</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1467257463113</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -492,7 +499,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
+    <frame x="-7" y="0" width="1370" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -501,8 +508,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32838285" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2512235" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32682925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.83686787" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -511,7 +518,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53017944" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3034258" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -538,7 +545,8 @@
     <MESSAGE value="Implemented &quot;remove player&quot; menu option" />
     <MESSAGE value="Implemented alphabetical sorting of the teams and players" />
     <MESSAGE value="Implemented height report for teams" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented height report for teams" />
+    <MESSAGE value="Implemented experience report, fixed bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented experience report, fixed bugs" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -553,18 +561,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/com/olgaivancic/view/Prompter.java</url>
-          <line>163</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/com/olgaivancic/view/Prompter.java</url>
-          <line>132</line>
+          <line>119</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/com/olgaivancic/view/Prompter.java</url>
+          <line>221</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -577,7 +585,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="966">
           <caret line="54" column="5" selection-start-line="42" selection-start-column="4" selection-end-line="54" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="e#899#900#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -627,7 +637,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="66" column="34" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
-          <folding />
+          <folding>
+            <element signature="e#899#900#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -677,7 +689,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-          <folding />
+          <folding>
+            <element signature="e#899#900#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -727,7 +741,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-          <folding />
+          <folding>
+            <element signature="e#899#900#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -769,7 +785,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-          <folding />
+          <folding>
+            <element signature="e#899#900#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -811,7 +829,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-          <folding />
+          <folding>
+            <element signature="e#899#900#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -853,7 +873,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-          <folding />
+          <folding>
+            <element signature="e#899#900#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -895,7 +917,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#899#900#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -919,7 +943,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#899#900#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -946,30 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Players.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1218">
-          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1491">
-          <caret line="79" column="49" selection-start-line="79" selection-start-column="49" selection-end-line="79" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Team.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1533">
-          <caret line="87" column="38" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/olgaivancic/controller/LeagueManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -980,16 +982,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Teams.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2730">
-          <caret line="138" column="58" selection-start-line="138" selection-start-column="58" selection-end-line="138" selection-end-column="58" />
+        <state relative-caret-position="798">
+          <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Team.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2352">
+          <caret line="128" column="40" selection-start-line="128" selection-start-column="40" selection-end-line="128" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+          <folding>
+            <element signature="e#899#900#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Players.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1218">
+          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/com/olgaivancic/view/Prompter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="155" column="17" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
+        <state relative-caret-position="424">
+          <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -9,12 +9,20 @@ public class Player implements Comparable<Player>, Serializable {
     private String mLastName;
     private int mHeightInInches;
     private boolean mPreviousExperience;
+    private String mHeightEvaluation;
 
     public Player(String firstName, String lastName, int heightInInches, boolean previousExperience) {
         this.mFirstName = firstName;
         this.mLastName = lastName;
         this.mHeightInInches = heightInInches;
         this.mPreviousExperience = previousExperience;
+        if (heightInInches < 39) {
+            this.mHeightEvaluation = "Below Average";
+        } else if (heightInInches >= 39 && heightInInches <= 42) {
+            this.mHeightEvaluation = "Average";
+        } else {
+            this.mHeightEvaluation = "Above Average";
+        }
     }
 
     public String getFirstName() {
@@ -33,7 +41,10 @@ public class Player implements Comparable<Player>, Serializable {
         return mPreviousExperience;
     }
 
-    // TODO: complete compareTo method for Player
+    public String getHeightEvaluation() {
+        return mHeightEvaluation;
+    }
+
     @Override
     public int compareTo(Player other) {
         // Compare by last name then first name

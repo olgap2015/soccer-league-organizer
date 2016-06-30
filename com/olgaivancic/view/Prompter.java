@@ -29,7 +29,7 @@ public class Prompter {
         mMenu.put("2", "ADD a PLAYER to the team");
         mMenu.put("3", "REMOVE PLAYER from the team back to the waiting list");
         mMenu.put("4", "run a HEIGHT REPORT for a particular team");
-        mMenu.put("5", "run a EXPERIENCE REPORT for the whole League");
+        mMenu.put("5", "run a LEAGUE BALANCE REPORT");
         mMenu.put("6", "print (on the screen) a ROSTER for a particular team");
         mMenu.put("quit", "QUIT the program");
         mTeams = teams;
@@ -76,13 +76,7 @@ public class Prompter {
                         Player player = promptForPlayer(mPlayers);
 
                         // Add the chosen player to the chosen team
-                        mTeams.addPlayer(chosenTeam, player);
-                        // Remove that player from the waiting list.
-                        mPlayers.getPlayers().remove(player);
-                        System.out.printf("%nPlayer %s %s was added to the team \"%s\".%n",
-                                player.getFirstName(),
-                                player.getLastName(),
-                                chosenTeam.getTeamName());
+                        addPlayer(chosenTeam, player);
                         break;
                     case "3":
                         // choose the team
@@ -110,15 +104,7 @@ public class Prompter {
                         player = promptForPlayer(teamPlayers);
 
                         // Remove player from the team
-                        mTeams.removePlayer(chosenTeam, player);
-
-                        // Add player to the waiting list
-                        mPlayers.getPlayers().add(player);
-
-                        System.out.printf("%nPlayer %s %s was removed from the team \"%s\".%n",
-                                player.getFirstName(),
-                                player.getLastName(),
-                                chosenTeam.getTeamName());
+                        removePlayer(chosenTeam, player);
                         break;
                     case "4":
                         // Choose a team for the report.
@@ -131,7 +117,7 @@ public class Prompter {
                         if (mTeams.getTeams().size() == 0) {
                             System.out.println("\nThere are no teams created yet!");
                         } else {
-                            runExperienceReport();
+                            runLeagueBalanceReport();
                         }
                         break;
                     case "6":
@@ -156,6 +142,35 @@ public class Prompter {
 
     }
 
+    private void removePlayer(Team chosenTeam, Player player) {
+        // Remove player from the team
+        mTeams.removePlayer(chosenTeam, player);
+
+        // Add player to the waiting list
+        mPlayers.getPlayers().add(player);
+
+        System.out.printf("%nPlayer %s %s was removed from the team \"%s\".%n",
+                player.getFirstName(),
+                player.getLastName(),
+                chosenTeam.getTeamName());
+
+        outputSortedTeamPlayers(chosenTeam);
+    }
+
+    private void addPlayer(Team chosenTeam, Player player) {
+        // Add player to the chosen team
+        mTeams.addPlayer(chosenTeam, player);
+        // Remove that player from the waiting list.
+        mPlayers.getPlayers().remove(player);
+        // Output the current list of players
+        System.out.printf("%nPlayer %s %s was added to the team \"%s\".%n",
+                player.getFirstName(),
+                player.getLastName(),
+                chosenTeam.getTeamName());
+
+        outputSortedTeamPlayers(chosenTeam);
+    }
+
     /**
      * This method outputs a roster on the console containing current list of players and their stats.
      * It also displays the percentage of experienced players in the team.
@@ -171,6 +186,14 @@ public class Prompter {
         System.out.printf("%nCoach - %s.%n", chosenTeam.getCoach());
         System.out.printf("%d%% of players have previous experience.%n%n",
                 chosenTeam.calculatePercentOfExperPlayers());
+
+        outputSortedTeamPlayers(chosenTeam);
+        System.out.println();
+    }
+
+    private void outputSortedTeamPlayers(Team chosenTeam) {
+        System.out.printf("Current list of players for \"%s\":%n",
+                chosenTeam.getTeamName());
 
         Collections.sort(chosenTeam.getTeamPlayers(), (p1, p2) -> p1.compareTo(p2));
 
@@ -188,7 +211,7 @@ public class Prompter {
      * "no players on the team" is displayed for that team.
      * Precondition: there must be at least one team created.
      */
-    private void runExperienceReport() {
+    private void runLeagueBalanceReport() {
         // Create an updated map of teams mapped to percentage of experienced players in each team.
         Map<Team, Integer> teamsByExperience = mTeams.byExperience();
 
@@ -225,13 +248,27 @@ public class Prompter {
             System.out.println("This team currently doesn't have any players.\n");
         }
 
-        for (int height : chosenTeam.getHeights()) {
-            List<Player> playersForHeight = chosenTeam.getPlayersForHeight(height);
+        for (String heightEvaluation : chosenTeam.getHeights()) {
+            List<Player> playersForHeight = chosenTeam.getPlayersForHeight(heightEvaluation);
             Collections.sort(playersForHeight, (p1, p2) -> p1.compareTo(p2));
+            String string1;
+            if (heightEvaluation.equals("Below Average")) {
+                string1 = "< 39";
+            } else if (heightEvaluation.equals("Average")) {
+                string1 = "39 - 42";
+            } else {
+                string1 = "> 42";
+            }
             int playersCount = playersForHeight.size();
-            System.out.printf("%d in - %d players:%n", height, playersCount);
+            System.out.printf("%s (%s in) - %d players:%n",
+                    heightEvaluation,
+                    string1,
+                    playersCount);
             for (Player player : playersForHeight) {
-                System.out.printf("\t- %s, %s%n", player.getLastName(), player.getFirstName());
+                System.out.printf("\t- %s, %s (%d in)%n",
+                        player.getLastName(),
+                        player.getFirstName(),
+                        player.getHeightInInches());
             }
             System.out.println();
         }

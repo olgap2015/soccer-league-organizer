@@ -85,7 +85,7 @@ public class Team implements Comparable<Team> {
      *
      * @return Map of the team players by their height.
      */
-    public Map<Integer, List<Player>> byHeight() {
+    /*public Map<Integer, List<Player>> byHeight() {
         Map<Integer, List<Player>> byHeight = new TreeMap<>();
         for (Player player : mTeamPlayers) {
             List<Player> playerHeights = byHeight.get(player.getHeightInInches());
@@ -96,9 +96,24 @@ public class Team implements Comparable<Team> {
             playerHeights.add(player);
         }
         return byHeight;
+    }*/
+    public Map<String, List<Player>> byHeight() {
+        Map<String, List<Player>> byHeight = new TreeMap<>();
+        for (Player player : mTeamPlayers) {
+            List<Player> playerHeightEvaluations = byHeight.get(player.getHeightEvaluation());
+            if (playerHeightEvaluations == null) {
+                playerHeightEvaluations = new ArrayList<>();
+                byHeight.put(player.getHeightEvaluation(), playerHeightEvaluations);
+            }
+            playerHeightEvaluations.add(player);
+        }
+        return byHeight;
     }
 
-    public Set<Integer> getHeights() {
+    //    public Set<Integer> getHeights() {
+//        return byHeight().keySet();
+//    }
+    public Set<String> getHeights() {
         return byHeight().keySet();
     }
 
@@ -106,11 +121,11 @@ public class Team implements Comparable<Team> {
      * This method looks through the list of players and find the ones that match certain height
      * passed as a parameter.
      *
-     * @param height Height of a player in inches
+     * @param heightEvaluation Height of a player in inches
      * @return List of players that match certain height
      */
-    public List<Player> getPlayersForHeight(int height) {
-        List<Player> players = byHeight().get(height);
+    public List<Player> getPlayersForHeight(String heightEvaluation) {
+        List<Player> players = byHeight().get(heightEvaluation);
         Collections.sort(players, (p1, p2) -> p1.compareTo(p2));
         return players;
     }
