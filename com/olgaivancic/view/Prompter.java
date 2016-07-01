@@ -35,6 +35,9 @@ public class Prompter {
         mTeams = teams;
     }
 
+    /**
+     * Runs the prompter methods of the program.
+     */
     public void run() {
         String choice = "";
         do {
@@ -142,6 +145,13 @@ public class Prompter {
 
     }
 
+    /**
+     * Helper method that removes chosen player from the chosen team and adds that player back
+     * to the waiting list. Both the team and the player are passed as parameters.
+     *
+     * @param chosenTeam
+     * @param player
+     */
     private void removePlayer(Team chosenTeam, Player player) {
         // Remove player from the team
         mTeams.removePlayer(chosenTeam, player);
@@ -157,6 +167,13 @@ public class Prompter {
         outputSortedTeamPlayers(chosenTeam);
     }
 
+    /**
+     * Helper method that adds chosen player to the chosen team and removes the player from the
+     * waiting list. Both the team and the player are passed as parameters.
+     *
+     * @param chosenTeam
+     * @param player
+     */
     private void addPlayer(Team chosenTeam, Player player) {
         // Add player to the chosen team
         mTeams.addPlayer(chosenTeam, player);
@@ -191,6 +208,12 @@ public class Prompter {
         System.out.println();
     }
 
+    /**
+     * This method sorts in alphabetical order and outputs on the console the list of
+     * players from the particular teams.
+     *
+     * @param chosenTeam
+     */
     private void outputSortedTeamPlayers(Team chosenTeam) {
         System.out.printf("Current list of players for \"%s\":%n",
                 chosenTeam.getTeamName());
@@ -212,9 +235,9 @@ public class Prompter {
      * Precondition: there must be at least one team created.
      */
     private void runLeagueBalanceReport() {
-        // Create an updated map of teams mapped to percentage of experienced players in each team.
+        // Create an updated map of teams by the percentage of experienced players in each team.
         Map<Team, Integer> teamsByExperience = mTeams.byExperience();
-
+        System.out.printf("%47s%n%n", "EXPERIENCE REPORT");
         System.out.printf("%37s%20s%n", "Experienced", "Inexperienced");
         System.out.printf("%37s%18s%n%n", "players, %", "players, %");
 
@@ -234,6 +257,33 @@ public class Prompter {
         }
         System.out.println();
 
+        // Output the header of the table
+        System.out.printf("%47s%n%n", "HEIGHT REPORT");
+        System.out.printf("%35s%13s%18s%n", "Below Average", "Average", "Above Average");
+        System.out.printf("%32s%16s%15s%n", "players", "players", "players");
+        System.out.printf("%33s%17s%14s%n%n", "(< 39 in)", "(39 – 42 in)", "(> 42 in)");
+
+        // loop through each team to get the data out of the map into the table
+        for (Team team : mTeams.getTeams()) {
+            Map<String, List<Player>> byHeightEvaluation = team.byHeightEvaluations();
+
+            // If there are no players in the team display a message instead of stats.
+            if (team.getTeamPlayers().size() == 0) {
+                System.out.printf("%-30s%33s%n",
+                        "Team \"" + team.getTeamName() + "\"",
+                        "No   players   in   this   team");
+            } else {
+//                int shortPlayersCount = byHeightEvaluation.get("Below Average").size();
+//                int averagePlayersCount = byHeightEvaluation.get("Average").size();
+//                int tallPlayersCount = byHeightEvaluation.get("Above Average").size();
+                System.out.printf("%-30s%-16d%-15d%-5d%n",
+                        "Team \"" + team.getTeamName() + "\"",
+                        byHeightEvaluation.get("Below Average").size(),
+                        byHeightEvaluation.get("Average").size(),
+                        byHeightEvaluation.get("Above Average").size());
+            }
+        }
+        System.out.println();
     }
 
     /**
@@ -248,7 +298,7 @@ public class Prompter {
             System.out.println("This team currently doesn't have any players.\n");
         }
 
-        for (String heightEvaluation : chosenTeam.getHeights()) {
+        for (String heightEvaluation : chosenTeam.getHeightEvaluations()) {
             List<Player> playersForHeight = chosenTeam.getPlayersForHeight(heightEvaluation);
             Collections.sort(playersForHeight, (p1, p2) -> p1.compareTo(p2));
             String string1;
@@ -299,6 +349,11 @@ public class Prompter {
         return teamPlayers.get(playersNumber - 1);
     }
 
+    /**
+     * This method prompts user to choose a team from the list of created teams.
+     *
+     * @return The team chosen by the User.
+     */
     private Team promptForTeam() {
         // Output the list of available teams.
         mTeams.outputTeams();
@@ -367,6 +422,13 @@ public class Prompter {
         return choice;
     }
 
+    /**
+     * This method prompting User for data necessary to create a new team - team name
+     * and coach.
+     *
+     * @return Created team
+     * @throws IOException
+     */
     private Team promptForNewTeam() throws IOException {
         String teamName = "";
         boolean teamNameIsNotARepeat = true;
@@ -399,6 +461,13 @@ public class Prompter {
         return new Team(teamName, coach);
     }
 
+    /**
+     * This method outputs the menu on the screen and prompts user to choose
+     * one of the menu options.
+     *
+     * @return User's choice as a String
+     * @throws IOException
+     */
     private String promptAction() throws IOException {
         String choice = "";
         do {

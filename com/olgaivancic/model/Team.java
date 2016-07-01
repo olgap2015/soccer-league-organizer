@@ -81,23 +81,23 @@ public class Team implements Comparable<Team> {
     }
 
     /**
-     * This method creates a map of team players by height.
+     * This method creates a map of team players by height evaluations.
      *
      * @return Map of the team players by their height.
      */
-    /*public Map<Integer, List<Player>> byHeight() {
-        Map<Integer, List<Player>> byHeight = new TreeMap<>();
+    /*public Map<Integer, List<Player>> byHeightEvaluations() {
+        Map<Integer, List<Player>> byHeightEvaluations = new TreeMap<>();
         for (Player player : mTeamPlayers) {
-            List<Player> playerHeights = byHeight.get(player.getHeightInInches());
+            List<Player> playerHeights = byHeightEvaluations.get(player.getHeightInInches());
             if (playerHeights == null) {
                 playerHeights = new ArrayList<>();
-                byHeight.put(player.getHeightInInches(), playerHeights);
+                byHeightEvaluations.put(player.getHeightInInches(), playerHeights);
             }
             playerHeights.add(player);
         }
-        return byHeight;
+        return byHeightEvaluations;
     }*/
-    public Map<String, List<Player>> byHeight() {
+    public Map<String, List<Player>> byHeightEvaluations() {
         Map<String, List<Player>> byHeight = new TreeMap<>();
         for (Player player : mTeamPlayers) {
             List<Player> playerHeightEvaluations = byHeight.get(player.getHeightEvaluation());
@@ -110,22 +110,19 @@ public class Team implements Comparable<Team> {
         return byHeight;
     }
 
-    //    public Set<Integer> getHeights() {
-//        return byHeight().keySet();
-//    }
-    public Set<String> getHeights() {
-        return byHeight().keySet();
+
+    public Set<String> getHeightEvaluations() {
+        return byHeightEvaluations().keySet();
     }
 
     /**
-     * This method looks through the list of players and find the ones that match certain height
+     * This method looks through the list of players and finds the ones that match certain height
      * passed as a parameter.
-     *
      * @param heightEvaluation Height of a player in inches
      * @return List of players that match certain height
      */
     public List<Player> getPlayersForHeight(String heightEvaluation) {
-        List<Player> players = byHeight().get(heightEvaluation);
+        List<Player> players = byHeightEvaluations().get(heightEvaluation);
         Collections.sort(players, (p1, p2) -> p1.compareTo(p2));
         return players;
     }
