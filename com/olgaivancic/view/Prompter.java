@@ -19,6 +19,7 @@ public class Prompter {
     private Players mPlayers;
     private Map<String, String> mMenu;
     private Teams mTeams;
+    private Map<String, List<Player>> mByHeightEvaluation;
 
 
     public Prompter(Players players, Teams teams) {
@@ -33,6 +34,7 @@ public class Prompter {
         mMenu.put("6", "print (on the screen) a ROSTER for a particular team");
         mMenu.put("quit", "QUIT the program");
         mTeams = teams;
+        mByHeightEvaluation = new TreeMap<>();
     }
 
     /**
@@ -43,12 +45,18 @@ public class Prompter {
         do {
             try {
                 choice = promptAction();
+                boolean tooManyTeams = mTeams.getTeams().size() == mPlayers.getPlayers().size();
+                boolean noPlayersOnTheWaitingList = mPlayers.getPlayers().size() == 0;
+
                 switch (choice.toLowerCase()) {
                     case "1":
-                        if (mTeams.getTeams().size() == mTeams.getTotalAvailablePlayers()) {
+                        if (tooManyTeams) {
                             System.out.println("\nYou can't create a new team because you have already created " +
                                     "the maximum amount of teams allowed!\n");
                             break;
+                        } else if (noPlayersOnTheWaitingList){
+                            System.out.println("\nYou can't add a new team because there are no players " +
+                                               "on the waiting list!\n");
                         } else {
                             Team team = promptForNewTeam();
                             mTeams.addTeam(team);
@@ -60,6 +68,10 @@ public class Prompter {
                             System.out.println("\nYou can't add a player because there are no teams created yet." +
                                     "\nPlease, start by creating a team first!");
                             break;
+                        } else if (noPlayersOnTheWaitingList) {
+                            System.out.println("\nYou can't add a player because there are no players on the " +
+                                               "waiting list!\n");
+
                         }
 
                         // Choose the team
@@ -265,7 +277,10 @@ public class Prompter {
 
         // loop through each team to get the data out of the map into the table
         for (Team team : mTeams.getTeams()) {
-            Map<String, List<Player>> byHeightEvaluation = team.byHeightEvaluations();
+            mByHeightEvaluation = team.byHeightEvaluations();
+//            int shortPlayersCount = 0;
+//            int averagePlayersCount = 0;
+//            int tallPlayersCount = 0;
 
             // If there are no players in the team display a message instead of stats.
             if (team.getTeamPlayers().size() == 0) {
@@ -273,17 +288,25 @@ public class Prompter {
                         "Team \"" + team.getTeamName() + "\"",
                         "No   players   in   this   team");
             } else {
-//                int shortPlayersCount = byHeightEvaluation.get("Below Average").size();
-//                int averagePlayersCount = byHeightEvaluation.get("Average").size();
-//                int tallPlayersCount = byHeightEvaluation.get("Above Average").size();
+                int shortPlayerCount = countTeamPlayersByHeight("Below Average");
+                int averagePlayerCount = countTeamPlayersByHeight("Average");
+                int tallPlayerCount = countTeamPlayersByHeight("Above Average");
                 System.out.printf("%-30s%-16d%-15d%-5d%n",
                         "Team \"" + team.getTeamName() + "\"",
-                        byHeightEvaluation.get("Below Average").size(),
-                        byHeightEvaluation.get("Average").size(),
-                        byHeightEvaluation.get("Above Average").size());
+                        shortPlayerCount,
+                        averagePlayerCount,
+                        tallPlayerCount);
             }
         }
         System.out.println();
+    }
+
+    private int countTeamPlayersByHeight(String heightCategory) {
+        int playersCount = 0;
+        if (mByHeightEvaluation.containsKey(heightCategory)) {
+            playersCount = mByHeightEvaluation.get(heightCategory).size();
+        }
+        return playersCount;
     }
 
     /**
