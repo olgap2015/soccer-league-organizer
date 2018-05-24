@@ -51,14 +51,9 @@ public class Players {
     /**
      * This method outputs on the console the list of the available players.
      */
-    public void outputPlayers() {
-        System.out.printf("Please, choose a player from the list of %d available players.%n", mPlayers.size());
-
+    public void sortPlayers() {
         // Sort the players alphabetically.
         Collections.sort(mPlayers, (player1, player2) -> player1.compareTo(player2));
-
-        // output all players on the waiting list
-        mPlayers.forEach(player -> System.out.printf("Player #%d: %s%n", mPlayers.indexOf(player) + 1, player));
     }
 
 }

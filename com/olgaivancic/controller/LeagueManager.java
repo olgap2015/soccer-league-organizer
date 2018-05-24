@@ -11,7 +11,8 @@ public class LeagueManager {
         Teams teams = new Teams(players);
 
         Prompter prompter = new Prompter(players, teams);
-        prompter.run();
+        Processor processor = new Processor(players, teams, prompter);
+        processor.run();
     }
 
 }

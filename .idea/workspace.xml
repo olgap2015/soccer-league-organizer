@@ -2,15 +2,16 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/com/olgaivancic/model/Team.java" line="99" />
+    <bookmark url="file://$PROJECT_DIR$/com/olgaivancic/controller/Processor.java" line="37" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fad0904d-d623-435b-81d4-0785525009c5" name="Default" comment="Added Height Report functionality to the LeagueBalanceReport method">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/com/olgaivancic/controller/Processor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/olgaivancic/controller/LeagueManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/olgaivancic/controller/LeagueManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/olgaivancic/model/Players.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/olgaivancic/model/Players.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/olgaivancic/model/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/olgaivancic/model/Team.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/com/olgaivancic/view/Prompter.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/olgaivancic/view/Prompter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SoccerLeagueOrganizer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoccerLeagueOrganizer/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SoccerLeagueOrganizer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoccerLeagueOrganizer/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="SoccerLeagueOrganazer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,8 +48,8 @@
       <file leaf-file-name="Players.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Players.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1109">
-              <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+            <state relative-caret-position="218">
+              <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
               <folding>
                 <element signature="e#198#199#0" expanded="true" />
                 <element signature="e#229#230#0" expanded="true" />
@@ -60,17 +61,35 @@
       <file leaf-file-name="LeagueManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/olgaivancic/controller/LeagueManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="66">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Prompter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Prompter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/olgaivancic/view/Prompter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-37">
-              <caret line="296" column="44" lean-forward="true" selection-start-line="296" selection-start-column="44" selection-end-line="296" selection-end-column="44" />
+            <state relative-caret-position="242">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1335#1336#0" expanded="true" />
+                <element signature="e#1366#1367#0" expanded="true" />
+                <element signature="e#1410#1411#0" expanded="true" />
+                <element signature="e#1438#1439#0" expanded="true" />
+                <element signature="e#1469#1470#0" expanded="true" />
+                <element signature="e#1498#1499#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Processor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/com/olgaivancic/controller/Processor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="33" column="58" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -81,11 +100,12 @@
       <file leaf-file-name="Teams.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Teams.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="44">
+              <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding>
                 <element signature="e#519#520#0" expanded="true" />
                 <element signature="e#564#565#0" expanded="true" />
+                <element signature="e#600#601#0" expanded="true" />
                 <element signature="e#629#630#0" expanded="true" />
               </folding>
             </state>
@@ -95,8 +115,8 @@
       <file leaf-file-name="Team.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Team.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="109" selection-start-line="109" selection-end-line="109" />
+            <state relative-caret-position="44">
+              <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
               <folding>
                 <element signature="e#520#521#0" expanded="true" />
                 <element signature="e#552#553#0" expanded="true" />
@@ -121,6 +141,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>byheightevaluations</find>
+      <find>promptforteam</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,20 +154,14 @@
         <option value="$PROJECT_DIR$/LeagueManager.java" />
         <option value="$PROJECT_DIR$/TeamList.java" />
         <option value="$PROJECT_DIR$/com/olgaivancic/model/TeamList.java" />
-        <option value="$PROJECT_DIR$/com/olgaivancic/controller/LeagueManager.java" />
         <option value="$PROJECT_DIR$/com/olgaivancic/model/Teams.java" />
         <option value="$PROJECT_DIR$/com/olgaivancic/model/Player.java" />
-        <option value="$PROJECT_DIR$/com/olgaivancic/model/Team.java" />
+        <option value="$PROJECT_DIR$/com/olgaivancic/controller/LeagueManager.java" />
         <option value="$PROJECT_DIR$/com/olgaivancic/model/Players.java" />
         <option value="$PROJECT_DIR$/com/olgaivancic/view/Prompter.java" />
+        <option value="$PROJECT_DIR$/com/olgaivancic/model/Team.java" />
+        <option value="$PROJECT_DIR$/com/olgaivancic/controller/Processor.java" />
       </list>
-    </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -458,24 +473,24 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5030488" side_tool="true" weight="0.3294702" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.13543092" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21477428" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32682925" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="4" />
       <window_info anchor="right" id="Designer" order="5" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4964539" visible="true" weight="0.099609375" />
-      <window_info id="Structure" order="2" sideWeight="0.5035461" side_tool="true" visible="true" weight="0.099609375" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49658003" visible="true" weight="0.22265625" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.4117647" />
+      <window_info id="Structure" order="2" sideWeight="0.50342" side_tool="true" visible="true" weight="0.22265625" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info id="UI Designer" order="3" />
       <window_info anchor="right" id="Theme Preview" order="0" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.22845417" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.22845417" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.78052807" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -507,21 +522,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/com/olgaivancic/controller/LeagueManager.java</url>
-          <line>13</line>
+          <line>14</line>
           <properties />
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/com/olgaivancic/view/Prompter.java</url>
-          <line>134</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/com/olgaivancic/view/Prompter.java</url>
-          <line>278</line>
-          <properties />
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/com/olgaivancic/model/Team.java</url>
@@ -540,18 +543,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="54" column="5" selection-start-line="42" selection-start-column="4" selection-end-line="54" selection-end-column="5" />
-          <folding>
-            <element signature="e#1180#1181#0" expanded="true" />
-            <element signature="e#1222#1223#0" expanded="true" />
-            <element signature="e#1305#1306#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Players.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1449">
@@ -575,6 +566,12 @@
         <state>
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1498#1499#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -586,6 +583,7 @@
           <folding>
             <element signature="e#519#520#0" expanded="true" />
             <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
             <element signature="e#629#630#0" expanded="true" />
           </folding>
         </state>
@@ -641,6 +639,12 @@
         <state>
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1498#1499#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -652,6 +656,7 @@
           <folding>
             <element signature="e#519#520#0" expanded="true" />
             <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
             <element signature="e#629#630#0" expanded="true" />
           </folding>
         </state>
@@ -707,6 +712,12 @@
         <state>
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1498#1499#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -718,6 +729,7 @@
           <folding>
             <element signature="e#519#520#0" expanded="true" />
             <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
             <element signature="e#629#630#0" expanded="true" />
           </folding>
         </state>
@@ -773,6 +785,12 @@
         <state>
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1498#1499#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -827,6 +845,12 @@
         <state>
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1498#1499#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -881,6 +905,12 @@
         <state>
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1498#1499#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -935,6 +965,12 @@
         <state>
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1498#1499#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1007,36 +1043,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/jre/lib/rt.jar!/java/lang/Object.class" />
-    <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Players.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1109">
-          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
-          <folding>
-            <element signature="e#198#199#0" expanded="true" />
-            <element signature="e#229#230#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/olgaivancic/controller/LeagueManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Teams.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#519#520#0" expanded="true" />
-            <element signature="e#564#565#0" expanded="true" />
-            <element signature="e#629#630#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1049,10 +1055,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Players.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+          <folding>
+            <element signature="e#198#199#0" expanded="true" />
+            <element signature="e#229#230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/olgaivancic/view/Prompter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1335#1336#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1498#1499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Team.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="109" selection-start-line="109" selection-end-line="109" />
+        <state relative-caret-position="44">
+          <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
           <folding>
             <element signature="e#520#521#0" expanded="true" />
             <element signature="e#552#553#0" expanded="true" />
@@ -1064,10 +1097,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/olgaivancic/view/Prompter.java">
+    <entry file="file://$PROJECT_DIR$/com/olgaivancic/model/Teams.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-37">
-          <caret line="296" column="44" lean-forward="true" selection-start-line="296" selection-start-column="44" selection-end-line="296" selection-end-column="44" />
+        <state relative-caret-position="44">
+          <caret line="2" column="13" lean-forward="true" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#519#520#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/olgaivancic/controller/LeagueManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/olgaivancic/controller/Processor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="33" column="58" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

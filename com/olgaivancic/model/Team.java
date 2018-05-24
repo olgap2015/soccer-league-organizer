@@ -118,6 +118,7 @@ public class Team implements Comparable<Team> {
     /**
      * This method looks through the list of players and finds the ones that match certain height
      * passed as a parameter.
+     *
      * @param heightEvaluation Height of a player in inches
      * @return List of players that match certain height
      */
